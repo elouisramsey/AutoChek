@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'AvenirBlack';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('/fonts/AvenirBlack.otf') format('otf');
+}
+
+@layer base {
+  html {
+    font-family: AvenirBlack, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply font-AvenirBlack items-center justify-center px-5 flex font-extrabold rounded;
+  }
+
+  .default {
+    @apply bg-primary text-sm text-secondary h-10;
+  }
+
+  .default:hover {
+    @apply text-white transition;
+  }
+}
+
+.hero {
+        background: rgba(49,53,91,.9);
+}
+
+.hero::before {
+  content: '';
+  background-image: url('/images/hero-car.webp');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
+}
