@@ -26,6 +26,10 @@ module.exports = {
       },
       boxShadow: {
         '5xl': '0 6px 22px hsl(230deg 5% 51% / 10%)'
+      },
+      height: {
+        '24vh': '24vh',
+        '66vh': '76vh'
       }
     }
   },

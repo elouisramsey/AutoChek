@@ -25,7 +25,7 @@
   }
 
   .end {
-    @apply bg-gray-100 h-10 text-secondary text-lg
+    @apply bg-gray-100 h-10 text-secondary text-lg;
   }
 
   .default:hover {
@@ -34,7 +34,7 @@
 }
 
 .hero {
-        background: rgba(49,53,91,.9);
+  background: rgba(49, 53, 91, 0.9);
 }
 
 .hero::before {
@@ -47,4 +47,27 @@
   bottom: 0px;
   left: 0px;
   opacity: 0.4;
+}
+
+.slick-prev,
+.slick-next {
+  display: block;
+  position: absolute!important;
+  z-index: 50;
+  top: 30% !important;
+  width: 5rem!important;
+  height: 5rem!important;
+}
+
+.slick-prev {
+  left: 0 !important;
+}
+
+.slick-next {
+  right: 0 !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 2.5rem !important;
 }

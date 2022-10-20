@@ -6,11 +6,11 @@ type Props = {
   children: React.ReactNode
   subtitle: string
   title: string
-  to: string
+to: string
   text: string
 }
 
-function Layout({ children, subtitle, to, title, text }: Props) {
+function Layout({ children, subtitle, title, text, to }: Props) {
   return (
     <section className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
       <article className='text-center flex flex-col lg:w-2/5 mx-auto items-center'>

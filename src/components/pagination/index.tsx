@@ -20,7 +20,7 @@ function Pagination({
 }: Props) {
   const totalPages = Math.ceil(count / rowsPerPage)
   const firstIndex = page * rowsPerPage - rowsPerPage + 1
-console.log(firstIndex)
+
   const handleBackButtonClick = () => {
     onChangePage && onChangePage(page - 1)
   }
@@ -31,24 +31,47 @@ console.log(firstIndex)
 
   return (
     <div className='flex justify-center items-baseline'>
-      <Button variant='end' onClick={() => onChangePage(1)}>
+      <Button
+        disabled={page <= 1}
+        label='First page'
+        variant='end'
+        onClick={() => onChangePage(1)}
+      >
         &#8676;
       </Button>
       <Spacer />
-      <Button onClick={handleBackButtonClick}>&larr; Previous</Button>
+      <Button
+        disabled={page <= 1}
+        label='Previous page'
+        onClick={handleBackButtonClick}
+      >
+        &larr; Previous
+      </Button>
       <Spacer />
       <div className='flex flex-row'>
         <Paragraph>Page {page}</Paragraph>
         <Paragraph>&nbsp; | &nbsp;</Paragraph>
         <Paragraph classNames='text-gray-600'>
-          {firstIndex} - {Math.min(firstIndex + renderedCount - 1, count)} of {' '}
+          {firstIndex} - {Math.min(firstIndex + renderedCount - 1, count)} of{' '}
           {count}
         </Paragraph>
       </div>
       <Spacer />
-      <Button onClick={handleNextButtonClick}> Next &rarr;</Button>
+      <Button
+        disabled={page === totalPages}
+        label='Next page'
+        onClick={handleNextButtonClick}
+      >
+        {' '}
+        Next &rarr;
+      </Button>
       <Spacer />
-      <Button variant='end' onClick={() => onChangePage(totalPages)}>
+      <Button
+        disabled={page === totalPages}
+        label='Last page'
+        variant='end'
+        onClick={() => onChangePage(totalPages)}
+      >
         &#8677;
       </Button>
     </div>

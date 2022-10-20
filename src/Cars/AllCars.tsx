@@ -6,22 +6,22 @@ import React from 'react'
 
 const AllCars = ({
   cars,
-  pagination,
+  classNames,
   heading
 }: {
   cars: CardetailsProps[]
-  pagination?: any,
+  classNames?: string
   heading: string
 }) => {
   return (
-    <Gallery heading={heading}>
+    <Gallery heading={heading} classNames={classNames}>
       {cars.map((car) => (
         <SingleImage
           marketplacePrice={car.marketplacePrice}
           key={car.id}
           img={car.imageUrl}
           title={car.title}
-          to={`cars/car/${car.id}`}
+          to={`/cars/car/${car.id}`}
         />
       ))}
     </Gallery>

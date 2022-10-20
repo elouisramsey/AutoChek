@@ -1,7 +1,8 @@
 import '../styles/tailwind.css'
 import type { AppProps } from 'next/app'
 import '@nextcss/reset'
-import TopHeader from 'shared/top/TopHeader'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import Index from 'shared/nav'
 
 function MyApp({ Component, pageProps }: AppProps) {

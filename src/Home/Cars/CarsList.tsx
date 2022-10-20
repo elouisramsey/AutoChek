@@ -11,7 +11,7 @@ function CarsList({ carsList }: Props) {
   return (
     <Layout
       text='See more cars'
-      to='/cars/all/2'
+      to='/cars'
       subtitle='Limited reservations on upcoming cars'
       title='Collection of the best affordable cars'
     >

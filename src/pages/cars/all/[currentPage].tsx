@@ -29,9 +29,10 @@ function Cars() {
   const pageData = allCars.slice(page * pageSize - pageSize, page * pageSize)
 
   return (
-    <section>
+    <section className='h-screen my-12'>
       <AllCars
-        heading='Carsing for sale in Nigeria'
+      classNames='lg:py-8'
+        heading='Cars for sale in Nigeria'
         cars={pageData}
       />
       <Pagination
@@ -66,17 +67,3 @@ export default Cars
 //   }
 // }
 
-{
-  /*
-
-currentPage
-: 
-1
-pageSize
-: 
-24
-total
-: 
-5521
-*/
-}

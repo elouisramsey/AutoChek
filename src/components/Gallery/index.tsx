@@ -3,13 +3,17 @@ import React from 'react'
 
 const Gallery = ({
   children,
-  heading
+  heading,
+  classNames
 }: {
   children: React.ReactNode
   heading: string
+  classNames?: string
 }) => {
   return (
-    <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
+    <div
+      className={`max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ${classNames}`}
+    >
       <Paragraph classNames='lg:text-2xl text-black font-bold mb-8'>
         {heading}
       </Paragraph>

@@ -6,10 +6,32 @@ export interface CarProps {
 
 export interface CardetailsProps {
   bodyTypeId?: string | number
+  carName?: string
   ccMeasurement?: number
   city?: string
   depositReceived?: boolean
+  engineType?: string
   fuelType?: string
+  exteriorColor?: string
+  insured?: boolean
+  isFeatured?: boolean
+  interiorColor?: string
+  bodyType?: {
+    id: number
+    imageUrl: string
+    name: string
+  }
+  vin?: string
+  model?: {
+    id: number
+    imageUrl: string
+    name: string
+    popular: string
+    series: string
+    wheelType: string
+  }
+  ownerType?: string
+  country?: string
   gradeScore?: number
   hasFinancing?: boolean
   hasThreeDImage?: boolean

@@ -7,6 +7,7 @@ type Props = {
   variant?: string
   size?: string // sm, md, lg
   disabled?: boolean
+  label: string
 }
 
 type LinkProps = {
@@ -15,6 +16,7 @@ type LinkProps = {
   variant?: string
   size?: string // sm, md, lg
   classNames?: any
+
 }
 
 export default function Button({
@@ -23,10 +25,12 @@ export default function Button({
   variant = 'default',
   size = 'md',
   disabled,
+  label,
   ...rest
 }: Props) {
   return (
     <button
+    aria-label={label}
       className={`btn ${size} ${variant} ` + (disabled ? 'disabled' : '')}
       onClick={onClick}
       disabled={disabled}
