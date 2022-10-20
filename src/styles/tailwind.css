@@ -24,6 +24,10 @@
     @apply bg-primary text-sm text-secondary h-10;
   }
 
+  .end {
+    @apply bg-gray-100 h-10 text-secondary text-lg
+  }
+
   .default:hover {
     @apply text-white transition;
   }

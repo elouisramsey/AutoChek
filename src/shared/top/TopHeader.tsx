@@ -10,7 +10,7 @@ function TopHeader({}: Props) {
   return (
     <nav className='bg-secondary flex flex-row items-center lg:justify-between w-full h-20 px-6 lg:px-8 mb-8'>
       <section className='lg:w-1/8 flex flex-row lg:justify-between'>
-        <Paragraph>
+        <Paragraph classNames='text-white'>
           Offer Zone Top Deals & Discounts
         </Paragraph>
         <BsFillCartFill color='white' />
