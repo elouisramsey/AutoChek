@@ -11,6 +11,13 @@ type Props = {
   page: number
 }
 
+const goToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+
 function Pagination({
   count,
   renderedCount,
@@ -23,10 +30,12 @@ function Pagination({
 
   const handleBackButtonClick = () => {
     onChangePage && onChangePage(page - 1)
+    goToTop()
   }
 
   const handleNextButtonClick = () => {
     onChangePage && onChangePage(page + 1)
+    goToTop()
   }
 
   return (

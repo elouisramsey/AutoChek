@@ -5,22 +5,24 @@ import Tabs from 'components/tabs'
 import { api } from 'config/api'
 import { CardetailsProps } from 'Home/types'
 import Image from 'next/image'
+import router from 'next/router'
 import { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
+import { BiArrowBack } from 'react-icons/bi'
+import { convertCurrency } from 'shared/functions/functions'
 
 type Props = {
   singleCar: CardetailsProps
 }
 
 const tabs = [
-  { id: 1, name: 'Tech Specs' },
+  { id: 1, name: 'General Information' },
   {
     id: 2,
-    name: 'User Info.'
+    name: 'Technical Information '
   },
   {
     id: 3,
-    name: 'Others'
+    name: 'Aesthetics & Pricing'
   }
 ]
 
@@ -60,15 +62,11 @@ const Item = ({ singleCar }: Props) => {
 
   const getCarImages = () => {
     setLoading(true)
-    api.get(`/inventory/car_media?carId=R1nVTV4Mj`).then((res) => {
-      //   console.log(res.data.carMediaList)
-      setImages(res.data.carMediaList)
-    })
 
     api
       .get(`/inventory/car_media?carId=${id}`)
       .then((res) => {
-        // setImages(res.data.carMediaList)
+        setImages(res.data.carMediaList)
       })
       .then(() => {
         setLoading(false)
@@ -82,50 +80,42 @@ const Item = ({ singleCar }: Props) => {
   useEffect(() => {
     getCarImages()
   }, [])
-  console.log(images)
+
   return (
     <div className='relative h-66vh flex flex-row overflow-hidden '>
       <div className='absolute bottom-0 left-0 w-1/2 bg-white top-0 h-full'>
         {images.length > 0 && !loading ? (
-          <>
-            {images
-              .filter((image: any) => image.type?.slice(-3) === 'mp4')
-              .map((image: any) => {
-                return (
-                  <div
-                    key={image.id}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      position: 'relative'
-                    }}
-                    className={'bg-black h-full'}
-                  >
-                    <video controls width='100%'>
+          <Carousel>
+            {images.map((image: any) => {
+              const checkIfVideo = image.type?.slice(-3)
+              return (
+                <>
+                  {checkIfVideo === 'mp4' && (
+                    <video
+                      controls
+                      width='100%'
+                      muted
+                      aria-label={image.url}
+                      height='100%'
+                    >
                       <source src={image.url} type={image.type} />
                       Sorry, your browser doesn't support videos.
                     </video>
-                    {/* <ReactPlayer
-                      playing={true}
-                      width={'100%'}
-                      height={'100%'}
-                      url={[
-                        {
-                          src: image.url,
-                          type: image.type
-                        }
-                      ]}
-                      config={{
-                        file: {
-                          attributes: { autoPlay: true, controls: true }
-                        }
+                  )}
+                  {checkIfVideo !== 'mp4' && (
+                    <img
+                      key={image.id}
+                      src={image.url}
+                      alt={image.name}
+                      style={{
+                        objectFit: 'cover'
                       }}
-                    /> */}
-                  </div>
-                )
-              })}
-          
-          </>
+                    />
+                  )}
+                </>
+              )
+            })}
+          </Carousel>
         ) : (
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <Image
@@ -139,6 +129,12 @@ const Item = ({ singleCar }: Props) => {
         )}
       </div>
       <div className='w-1/2 bg-white absolute right-0 bottom-0 top-0 p-6'>
+        <button
+          onClick={() => router.back()}
+          className='flex items-center text-sm text-gray-400 hover:text-black transition ease-in-out'
+        >
+          <BiArrowBack className='mr-2' /> Go back
+        </button>
         <Tabs tabs={tabs} openTab={openTab} setOpenTab={setOpenTab} />
         {/* <Paragraph classNames='lg:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
           Technical Specifications
@@ -146,19 +142,73 @@ const Item = ({ singleCar }: Props) => {
         {openTab === 1 && (
           <CarInfo>
             <CarInfoChildren header={'Name'} value={carName || ''} />
-            <CarInfoChildren header={'Name'} value={carName || ''} />
+            <CarInfoChildren
+              header={'Country of Origin'}
+              value={country || ''}
+            />
+            <CarInfoChildren header={'City'} value={city || ''} />
+            <CarInfoChildren
+              header={'Warranty'}
+              value={hasWarranty ? 'true' : 'false' || false}
+            />
+            <CarInfoChildren header={'ID'} value={id || ''} />
+            <CarInfoChildren
+              header={'Insured'}
+              value={insured ? 'true' : 'false' || ''}
+            />
+            <CarInfoChildren
+              header={'Selling Condition'}
+              value={sellingCondition || ''}
+            />
+            <CarInfoChildren header={'Owner Type'} value={ownerType || ''} />
+            <CarInfoChildren header={'Model'} value={model?.name || ''} />
+            <CarInfoChildren header={'Year'} value={year || ''} />
           </CarInfo>
         )}
         {openTab === 2 && (
           <CarInfo>
-            <CarInfoChildren header={'Model'} value={model?.name || ''} />
-            <CarInfoChildren header={'Name'} value={carName || ''} />
+            <CarInfoChildren header={'Engine type'} value={engineType || ''} />
+            <CarInfoChildren header={'fuel type'} value={fuelType || ''} />
+            <CarInfoChildren header={'Mileage'} value={mileage || ''} />
+            <CarInfoChildren
+              header={'mileage unit'}
+              value={mileageUnit || ''}
+            />
+            <CarInfoChildren
+              header={'transmission'}
+              value={transmission || ''}
+            />
+            <CarInfoChildren header={'website'} value={websiteUrl || ''} />
           </CarInfo>
         )}
         {openTab === 3 && (
           <CarInfo>
-            <CarInfoChildren header={'State'} value={state || ''} />
-            <CarInfoChildren header={'City'} value={city || ''} />
+            <CarInfoChildren
+              header={'price'}
+              value={`\u20A6${convertCurrency(marketplacePrice || 0)}`}
+            />
+            <CarInfoChildren header={'vin'} value={vin || ''} />
+            <CarInfoChildren
+              header={'body type'}
+              value={bodyType?.name || ''}
+            />
+            <CarInfoChildren
+              header={'exterior color'}
+              value={exteriorColor || ''}
+            />
+            <CarInfoChildren
+              header={'interior color'}
+              value={interiorColor || ''}
+            />
+            <CarInfoChildren
+              header={'featured'}
+              value={isFeatured ? 'true' : 'false' || ''}
+            />
+            <CarInfoChildren header={'vin'} value={vin || ''} />
+            <CarInfoChildren
+              header={'date posted'}
+              value={marketplaceVisibleDate || ''}
+            />
           </CarInfo>
         )}
       </div>

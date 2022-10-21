@@ -23,8 +23,8 @@ function Tabs({ openTab, setOpenTab, tabs }: Props) {
             className={
               'text-xs font-bold uppercase px-5 py-3 block leading-normal font-AvenirBlack ' +
               (openTab === tab.id
-                ? 'text-secondary bg-blueGray-600 border-primary'
-                : 'text-gray-400 bg-white')
+                ? 'text-secondary'
+                : 'text-gray-400')
             }
             onClick={(e) => {
               e.preventDefault()
@@ -38,7 +38,7 @@ function Tabs({ openTab, setOpenTab, tabs }: Props) {
           </a>
           <div
             className={`border-b w-1/4 border-solid  ${
-              openTab === tab.id ? 'border-primary' : ' border-gray-400'
+              openTab === tab.id ? 'border-primary' : ' border-none'
             }`}
           />
         </li>

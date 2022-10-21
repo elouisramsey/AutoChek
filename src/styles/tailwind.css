@@ -52,11 +52,11 @@
 .slick-prev,
 .slick-next {
   display: block;
-  position: absolute!important;
+  position: absolute !important;
   z-index: 50;
   top: 30% !important;
-  width: 5rem!important;
-  height: 5rem!important;
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
 .slick-prev {
@@ -70,4 +70,10 @@
 .slick-prev:before,
 .slick-next:before {
   font-size: 2.5rem !important;
+}
+
+.slick-slide img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
