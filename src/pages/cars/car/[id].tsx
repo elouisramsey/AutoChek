@@ -223,7 +223,7 @@ export async function getStaticPaths() {
   let cars: any
 
   await api
-    .get(`/inventory/car/search?currentPage=10&pageSize=1000`)
+    .get(`/inventory/car/search?currentPage=10&pageSize=4000`)
     .then((res) => {
       return (cars = res.data.result)
     })
@@ -235,7 +235,7 @@ export async function getStaticPaths() {
         id: car.id
       }
     })),
-    fallback: false
+    fallback: true 
   }
 }
 

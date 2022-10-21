@@ -5,7 +5,7 @@ import { CardetailsProps } from 'Home/types'
 import React from 'react'
 
 const AllCars = ({
-  cars,
+  cars = [],
   classNames,
   heading
 }: {
