@@ -34,7 +34,7 @@ export async function getServerSideProps() {
     .catch((err) => alert(err))
 
   const cars = await api
-    .get('/inventory/car/search')
+    .get(`/inventory/car/search?currentPage=10&pageSize=1000`)
     .then((res) => res.data)
     .catch((err) => alert(err))
 
