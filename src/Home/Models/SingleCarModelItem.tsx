@@ -14,6 +14,7 @@ function SingleCarModelItem({ name, id, imageUrl }: CarProps) {
             height={'100%'}
             width='100%'
             src={imageUrl}
+            alt={name}
           />
         </article>
         <article className='mt-4 text-sm text-gray-700'>

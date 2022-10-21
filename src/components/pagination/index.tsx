@@ -46,7 +46,7 @@ function Pagination({
         variant='end'
         onClick={() => onChangePage(1)}
       >
-        &#8676;
+       &#8676;
       </Button>
       <Spacer />
       <Button

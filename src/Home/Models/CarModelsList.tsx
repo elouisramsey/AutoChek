@@ -19,6 +19,7 @@ function CarModelsList({ carsModelList }: Props) {
     >
       {carsModelList.map((model: CarProps) => (
         <SingleCarModelItem
+        key={model.id}
           name={model.name}
           id={model.id}
           imageUrl={model.imageUrl}

@@ -92,6 +92,7 @@ const Item = ({ singleCar }: Props) => {
                 <>
                   {checkIfVideo === 'mp4' && (
                     <video
+                      key={image.id}
                       controls
                       width='100%'
                       muted
@@ -99,7 +100,7 @@ const Item = ({ singleCar }: Props) => {
                       height='100%'
                     >
                       <source src={image.url} type={image.type} />
-                      Sorry, your browser doesn't support videos.
+                      Sorry, your browser does not support videos.
                     </video>
                   )}
                   {checkIfVideo !== 'mp4' && (
@@ -222,7 +223,7 @@ export async function getStaticPaths() {
   let cars: any
 
   await api
-    .get(`/inventory/car/search?currentPage=10&pageSize=2000`)
+    .get(`/inventory/car/search?pageSize=4000`)
     .then((res) => {
       return (cars = res.data.result)
     })

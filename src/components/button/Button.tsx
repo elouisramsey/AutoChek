@@ -7,7 +7,7 @@ type Props = {
   variant?: string
   size?: string // sm, md, lg
   disabled?: boolean
-  label: string
+  label?: string
 }
 
 type LinkProps = {

@@ -15,7 +15,7 @@ function Cars({ cars }: Props) {
 
   useEffect(() => {
     setAllCars(cars)
-  }, [])
+  }, [cars])
 
   const pageData =
     allCars.length > 0 &&
