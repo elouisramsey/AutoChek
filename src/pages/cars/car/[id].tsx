@@ -223,7 +223,7 @@ export async function getStaticPaths() {
   let cars: any
 
   await api
-    .get(`/inventory/car/search?currentPage=10&pageSize=4000`)
+    .get(`/inventory/car/search?currentPage=10&pageSize=100`)
     .then((res) => {
       return (cars = res.data.result)
     })
