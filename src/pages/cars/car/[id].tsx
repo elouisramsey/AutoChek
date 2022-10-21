@@ -1,6 +1,5 @@
 import { CarInfo, CarInfoChildren } from 'components/CarDetails'
 import Carousel from 'components/Carousel'
-import { Paragraph } from 'components/DisplayText/DsiplayText'
 import Tabs from 'components/tabs'
 import { api } from 'config/api'
 import { CardetailsProps } from 'Home/types'
@@ -27,34 +26,7 @@ const tabs = [
 ]
 
 const Item = ({ singleCar }: Props) => {
-  const {
-    carName,
-    city,
-    bodyType,
-    country,
-    engineType,
-    exteriorColor,
-    fuelType,
-    hasWarranty,
-    id,
-    imageUrl,
-    insured,
-    interiorColor,
-    isFeatured,
-    marketplaceOldPrice,
-    marketplacePrice,
-    marketplaceVisibleDate,
-    mileage,
-    mileageUnit,
-    model,
-    ownerType,
-    sellingCondition,
-    state,
-    transmission,
-    vin,
-    websiteUrl,
-    year
-  } = singleCar
+
 
   const [openTab, setOpenTab] = useState<number>(1)
   const [images, setImages] = useState<any>([])
@@ -64,7 +36,7 @@ const Item = ({ singleCar }: Props) => {
     setLoading(true)
 
     api
-      .get(`/inventory/car_media?carId=${id}`)
+      .get(`/inventory/car_media?carId=${singleCar.id}`)
       .then((res) => {
         setImages(res.data.carMediaList)
       })
@@ -121,8 +93,8 @@ const Item = ({ singleCar }: Props) => {
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <Image
               objectPosition='center'
-              src={imageUrl}
-              alt={carName}
+              src={singleCar?.imageUrl}
+              alt={singleCar?.carName}
               layout='fill'
               objectFit='contain'
             />
@@ -142,73 +114,93 @@ const Item = ({ singleCar }: Props) => {
         </Paragraph> */}
         {openTab === 1 && (
           <CarInfo>
-            <CarInfoChildren header={'Name'} value={carName || ''} />
+            <CarInfoChildren header={'Name'} value={singleCar?.carName || ''} />
             <CarInfoChildren
               header={'Country of Origin'}
-              value={country || ''}
+              value={singleCar?.country || ''}
             />
-            <CarInfoChildren header={'City'} value={city || ''} />
+            <CarInfoChildren header={'City'} value={singleCar?.city || ''} />
             <CarInfoChildren
               header={'Warranty'}
-              value={hasWarranty ? 'true' : 'false' || false}
+              value={singleCar?.hasWarranty ? 'true' : 'false' || false}
             />
-            <CarInfoChildren header={'ID'} value={id || ''} />
+            <CarInfoChildren header={'ID'} value={singleCar?.id || ''} />
             <CarInfoChildren
               header={'Insured'}
-              value={insured ? 'true' : 'false' || ''}
+              value={singleCar?.insured ? 'true' : 'false' || ''}
             />
             <CarInfoChildren
               header={'Selling Condition'}
-              value={sellingCondition || ''}
+              value={singleCar?.sellingCondition || ''}
             />
-            <CarInfoChildren header={'Owner Type'} value={ownerType || ''} />
-            <CarInfoChildren header={'Model'} value={model?.name || ''} />
-            <CarInfoChildren header={'Year'} value={year || ''} />
+            <CarInfoChildren
+              header={'Owner Type'}
+              value={singleCar?.ownerType || ''}
+            />
+            <CarInfoChildren
+              header={'Model'}
+              value={singleCar?.model?.name || ''}
+            />
+            <CarInfoChildren header={'Year'} value={singleCar?.year || ''} />
           </CarInfo>
         )}
         {openTab === 2 && (
           <CarInfo>
-            <CarInfoChildren header={'Engine type'} value={engineType || ''} />
-            <CarInfoChildren header={'fuel type'} value={fuelType || ''} />
-            <CarInfoChildren header={'Mileage'} value={mileage || ''} />
+            <CarInfoChildren
+              header={'Engine type'}
+              value={singleCar?.engineType || ''}
+            />
+            <CarInfoChildren
+              header={'fuel type'}
+              value={singleCar?.fuelType || ''}
+            />
+            <CarInfoChildren
+              header={'Mileage'}
+              value={singleCar?.mileage || ''}
+            />
             <CarInfoChildren
               header={'mileage unit'}
-              value={mileageUnit || ''}
+              value={singleCar?.mileageUnit || ''}
             />
             <CarInfoChildren
               header={'transmission'}
-              value={transmission || ''}
+              value={singleCar?.transmission || ''}
             />
-            <CarInfoChildren header={'website'} value={websiteUrl || ''} />
+            <CarInfoChildren
+              header={'website'}
+              value={singleCar?.websiteUrl || ''}
+            />
           </CarInfo>
         )}
         {openTab === 3 && (
           <CarInfo>
             <CarInfoChildren
               header={'price'}
-              value={`\u20A6${convertCurrency(marketplacePrice || 0)}`}
+              value={`\u20A6${convertCurrency(
+                singleCar?.marketplacePrice || 0
+              )}`}
             />
-            <CarInfoChildren header={'vin'} value={vin || ''} />
+            <CarInfoChildren header={'vin'} value={singleCar?.vin || ''} />
             <CarInfoChildren
               header={'body type'}
-              value={bodyType?.name || ''}
+              value={singleCar?.bodyType?.name || ''}
             />
             <CarInfoChildren
               header={'exterior color'}
-              value={exteriorColor || ''}
+              value={singleCar?.exteriorColor || ''}
             />
             <CarInfoChildren
               header={'interior color'}
-              value={interiorColor || ''}
+              value={singleCar?.interiorColor || ''}
             />
             <CarInfoChildren
               header={'featured'}
-              value={isFeatured ? 'true' : 'false' || ''}
+              value={singleCar?.isFeatured ? 'true' : 'false' || ''}
             />
-            <CarInfoChildren header={'vin'} value={vin || ''} />
+            <CarInfoChildren header={'vin'} value={singleCar?.vin || ''} />
             <CarInfoChildren
               header={'date posted'}
-              value={marketplaceVisibleDate || ''}
+              value={singleCar?.marketplaceVisibleDate || ''}
             />
           </CarInfo>
         )}

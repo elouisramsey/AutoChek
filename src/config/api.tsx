@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const defaults = {
-  timeout: 60000,
+  // timeout: 60000,
   validateStatus: (status: number) =>
     [200, 400, 401, 404, 500].includes(status),
   headers: {
