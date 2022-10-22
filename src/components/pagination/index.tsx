@@ -41,7 +41,7 @@ function Pagination({
   return (
     <div className='flex justify-center items-baseline'>
       <Button
-        className='hidden lg:flex'
+        classNames='hidden lg:flex'
         disabled={page <= 1}
         label='First page'
         variant='end'
@@ -77,7 +77,7 @@ function Pagination({
       </Button>
       <Spacer />
       <Button
-        className='hidden lg:flex'
+        classNames='hidden lg:flex'
         disabled={page === totalPages}
         label='Last page'
         variant='end'
