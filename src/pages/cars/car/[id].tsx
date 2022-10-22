@@ -7,6 +7,7 @@ import Image from 'next/image'
 import router from 'next/router'
 import { useEffect, useState } from 'react'
 import { BiArrowBack } from 'react-icons/bi'
+import Footer from 'shared/footer/Footer'
 import { convertCurrency } from 'shared/functions/functions'
 
 type Props = {
@@ -54,8 +55,8 @@ const Item = ({ singleCar }: Props) => {
   }, [])
 
   return (
-    <div className='relative h-66vh flex flex-row overflow-hidden '>
-      <div className='absolute bottom-0 left-0 w-1/2 bg-white top-0 h-full'>
+    <div className='relative lg:h-66vh lg:flex flex-row overflow-hidden '>
+      <div className='lg:absolute bottom-0 left-0 lg:w-1/2 bg-white top-0 h-full'>
         {images.length > 0 && !loading ? (
           <Carousel>
             {images.map((image: any) => {
@@ -101,10 +102,10 @@ const Item = ({ singleCar }: Props) => {
           </div>
         )}
       </div>
-      <div className='w-1/2 bg-white absolute right-0 bottom-0 top-0 p-6'>
+      <div className='lg:w-1/2 bg-white lg:absolute right-0 bottom-0 top-0 py-6 px-4'>
         <button
           onClick={() => router.back()}
-          className='flex items-center text-sm text-gray-400 hover:text-black transition ease-in-out'
+          className='flex items-center text-sm text-gray-400 hover:text-black transition ease-in-out mt-5 lg:mt-0'
         >
           <BiArrowBack className='mr-2' /> Go back
         </button>
@@ -205,6 +206,7 @@ const Item = ({ singleCar }: Props) => {
           </CarInfo>
         )}
       </div>
+      <Footer />
     </div>
   )
 }

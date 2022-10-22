@@ -13,7 +13,7 @@ function CarModelsList({ carsModelList }: Props) {
   return (
     <Layout
       text='See more brands'
-      to='/car-brands'
+      to='#'
       subtitle='  Introducing the Different Brands we have'
       title='Collection of the best brands from all over the world'
     >

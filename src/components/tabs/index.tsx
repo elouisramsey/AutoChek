@@ -14,17 +14,18 @@ type Props = {
 function Tabs({ openTab, setOpenTab, tabs }: Props) {
   return (
     <ul
-      className='flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row'
+      className='flex mb-0 list-none lg:flex-wrap pt-3 pb-4 flex-row overflow-hidden items-center justify-center'
       role='tablist'
     >
       {tabs.map((tab) => (
-        <li className='-mb-px mr-2 last:mr-0 flex-auto text-center flex items-center flex-col' key={tab.id}>
+        <li
+          className='lg:mr-2 last:mr-0 flex-auto text-center flex items-center flex-col'
+          key={tab.id}
+        >
           <a
             className={
-              'text-xs font-bold uppercase px-5 py-3 block leading-normal font-AvenirBlack ' +
-              (openTab === tab.id
-                ? 'text-secondary'
-                : 'text-gray-400')
+              'text-xs font-bold uppercase px-5 py-3 block leading-normal font-AvenirBlack text-center ' +
+              (openTab === tab.id ? 'text-secondary' : 'text-gray-400')
             }
             onClick={(e) => {
               e.preventDefault()

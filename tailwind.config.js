@@ -30,6 +30,9 @@ module.exports = {
       height: {
         '24vh': '24vh',
         '66vh': '76vh'
+      },
+      fontSize: {
+        small: '0.8rem'
       }
     }
   },

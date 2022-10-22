@@ -1,26 +1,16 @@
-import Button from 'components/button/Button'
-import { Header } from 'components/DisplayText/DsiplayText'
-import Gallery from 'components/Gallery'
 import { api } from 'config/api'
 import CarsList from 'Home/Cars/CarsList'
 import CarModelsList from 'Home/Models/CarModelsList'
-import type { NextPage } from 'next'
-import { useEffect } from 'react'
+import Footer from 'shared/footer/Footer'
 import Hero from 'shared/hero/Hero'
 
-const Home = ({
-  data,
-  cars
-}: {
-  data: any
-  cars: any
-}) => {
+const Home = ({ data, cars }: { data: any; cars: any }) => {
   return (
     <main className=''>
       <Hero />
       <CarModelsList carsModelList={data?.makeList} />
       <CarsList carsList={cars.result} />
-      {/* <Gallery cars={cars.result} /> */}
+      <Footer />
     </main>
   )
 }

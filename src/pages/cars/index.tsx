@@ -3,6 +3,7 @@ import Loader from 'components/loader/Loader'
 import Pagination from 'components/pagination'
 import { api } from 'config/api'
 import { useEffect, useState } from 'react'
+import Footer from 'shared/footer/Footer'
 
 function Cars() {
   const [allCars, setAllCars] = useState<any>([])
@@ -26,20 +27,23 @@ function Cars() {
   return (
     <>
       {allCars.length > 0 ? (
-        <section className='h-screen my-12'>
-          <AllCars
-            classNames='lg:py-8'
-            heading='Cars for sale in Nigeria'
-            cars={pageData}
-          />
-          <Pagination
-            onChangePage={(page) => setPage(page)}
-            count={allCars.length}
-            renderedCount={pageData.length}
-            rowsPerPage={pageSize}
-            page={page}
-          />
-        </section>
+        <>
+          <section className='lg:my-12 my-6'>
+            <AllCars
+              classNames='lg:py-8'
+              heading='Cars for sale in Nigeria'
+              cars={pageData}
+            />
+            <Pagination
+              onChangePage={(page) => setPage(page)}
+              count={allCars.length}
+              renderedCount={pageData.length}
+              rowsPerPage={pageSize}
+              page={page}
+            />
+          </section>
+          <Footer />
+        </>
       ) : (
         <Loader />
       )}
@@ -50,6 +54,7 @@ function Cars() {
 export default Cars
 
 // export async function getServerSideProps(context: any) {
+// would have used this if paging was working
 //   const page = context.query.hasOwnProperty('page')
 //     ? parseInt(context.query.page, 10)
 //     : 1
@@ -68,7 +73,6 @@ export default Cars
 //     }
 //   }
 // }
-
 
 {
   /* 
@@ -172,4 +176,3 @@ export default Cars
 
 */
 }
-

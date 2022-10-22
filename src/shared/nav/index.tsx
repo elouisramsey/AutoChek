@@ -6,7 +6,7 @@ type Props = {}
 
 function Index({}: Props) {
   return (
-    <header className='h-24vh'>
+    <header className='lg:h-24vh'>
       <TopHeader />
       <Search />
     </header>

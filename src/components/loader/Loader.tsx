@@ -4,7 +4,7 @@ type Props = {}
 
 const Loader = (props: Props) => {
   return (
-    <div role='status' className='absolute top-1/2 left-1/2 flex items-center justify-center'>
+    <div role='status' className='lg:absolute top-1/2 left-1/2'>
       <svg
         aria-hidden='true'
         className='mr-2 w-40 h-40 text-secondary animate-spin dark:text-secondary fill-primary'

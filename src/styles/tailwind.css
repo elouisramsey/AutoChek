@@ -54,7 +54,7 @@
   display: block;
   position: absolute !important;
   z-index: 50;
-  top: 30% !important;
+  top: 50% !important;
   width: 5rem !important;
   height: 5rem !important;
 }

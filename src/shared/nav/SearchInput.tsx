@@ -9,7 +9,7 @@ const SearchInput = (props: Props) => {
   const submit = () => {}
 
   return (
-    <form className='flex flex-row w-2/4 justify-between items-center'>
+    <form className='hidden lg:flex flex-row w-2/4 justify-between items-center'>
       <label htmlFor='search' className='sr-only' />
       <input
         onChange={(e) => setSearchString(e.target.value)}

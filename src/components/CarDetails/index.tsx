@@ -11,7 +11,7 @@ type Props = {
 
 const CarInfo = ({ children }: Props) => {
   return (
-    <dl className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-2 lg:gap-x-24'>
+    <dl className='mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-y-2 lg:gap-x-24'>
       {children}
     </dl>
   )

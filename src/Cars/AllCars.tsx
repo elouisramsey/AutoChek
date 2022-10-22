@@ -1,4 +1,3 @@
-import { Paragraph } from 'components/DisplayText/DsiplayText'
 import Gallery from 'components/Gallery'
 import SingleImage from 'components/Gallery/SingleImage'
 import { CardetailsProps } from 'Home/types'
